@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>
+	<class name="com.wonderfour.beans.Users" table="t_users">
+		<id name="user_id" column="user_id">
+			<generator class="native"/>
+		</id>
+		<property name="firstname" column="user_firstname"/>
+		<property name="lastname" column="user_lastname"/>
+		<property name="password" column="user_password"/>
+		<property name="email" column="user_email"/>
+		<property name="address" column="user_address"/>
+		<property name="phone" column="user_phone"/>
+		<property name="enabled" column="enabled"/>
+		<list name="order" cascade="all" table="t_order">
+			<key column="user_id"/>
+			<list-index column="idx"/>
+			<one-to-many class="com.wonderfour.beans.UserOrder"/>
+		</list>
+		<list name="cards" cascade="all" table="t_card">
+			<key column="card_id"/>
+			<list-index column="idx"/>
+			<one-to-many class="com.wonderfour.beans.Card"/>
+		</list>
+	</class>
+	     
+    <class name="com.wonderfour.beans.UserOrder" table="t_order">
+    	<id name="order_id" column="order_id">
+    		<generator class="increment"/>
+    	</id>
+    	<property name="user_id" column="user_id"/>
+    	<property name="book_id" column="book_id"/>
+    </class>
+    
+    <class name="com.wonderfour.beans.Card" table="t_card">
+    	<id name="card_id" column="card_id">
+    		<generator class="increment"/>
+    	</id>
+    	<property name="number" column="card_number"/>
+    	<property name="name" column="holder_name"/>
+    	<property name="date" column="exp_date"/>
+    	<property name="cvv" column="cvv"/>
+    	<property name="user_id" column="user_id"/>
+    </class>
+</hibernate-mapping>

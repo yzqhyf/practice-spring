@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>  
+    <class name="com.wonderfour.beans.Book" table="t_book">         
+        <id name="book_id" column="book_id"></id> 
+        <property name="book_name" column="book_name"/>
+        <property name="book_author" column="book_author"/>
+        <property name="book_price" column="book_price"/>
+        <property name="book_cateid" column="book_cateid"/>
+        <property name="book_intro" column="book_intro"/>
+        <property name="book_image_f" column="book_image_f"/>
+        <property name="book_image_b" column="book_image_b"/>
+        <property name="book_quantity" column="book_quantity"/>
+        <property name="book_pubtime" column="book_pubtime"/>
+    </class>
+</hibernate-mapping>

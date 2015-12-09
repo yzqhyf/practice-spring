@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>
+	<class name="com.mercury.beans.User" table="bookuser">
+		<id name="user_id" column="user_id">
+			<generator class="increment"/>
+		</id>
+		<property name="firstname" column="firstname"/>
+		<property name="lastname" column="lastname"/>
+		<property name="address" column="address"/>
+		<property name="email" column="email"/>
+		<property name="password" column="password"/>
+		<property name="phone" column="phone"/>
+		<list name="cards" cascade="all" table="cardinfo">
+			<key column="user_id"/>
+			<list-index column="idx"/>
+			<one-to-many class="com.mercury.beans.Card"/>
+		</list>
+	</class>
+	     
+    <class name="com.mercury.beans.Card" table="cardinfo">
+    	<id name="card_id" column="card_id">
+    		<generator class="increment"/>
+    	</id>
+    	<property name="number" column="number"/>
+    	<property name="name" column="name"/>
+    	<property name="date" column="date"/>
+    	<property name="cvv" column="cvv"/>
+    </class>
+</hibernate-mapping>
